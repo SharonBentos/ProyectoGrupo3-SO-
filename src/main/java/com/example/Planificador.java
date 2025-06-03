@@ -1,3 +1,5 @@
+package com.example;
+
 public class Planificador implements Runnable {
     private final CentroMedico centro;
 

@@ -1,3 +1,5 @@
+package com.example;
+
 public class Tiempo implements Comparable<Tiempo> {
     public int hora;
     public int minuto;

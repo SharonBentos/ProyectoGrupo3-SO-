@@ -1,15 +1,17 @@
+package com.example;
+
 import java.util.concurrent.*;
 import java.util.*;
 import java.io.PrintWriter;
 
 public class CentroMedico {
-    private final BlockingQueue<Paciente> colaGenerales = new LinkedBlockingQueue<>();
-    private final BlockingQueue<Paciente> colaEmergencias = new LinkedBlockingQueue<>();
+    private final BlockingQueue<Paciente> colaGenerales = new LinkedBlockingQueue<>();//Cola de pacientes para at. gral
+    private final BlockingQueue<Paciente> colaEmergencias = new LinkedBlockingQueue<>();//cola de pacientes para at emergencias
     private Tiempo tiempoActual = new Tiempo(8, 0);
     private final Tiempo tiempoFin = new Tiempo(20, 0);
     private final Configuracion config;
     private boolean finSimulacion = false;
-    private final Map<Integer, List<Paciente>> agendaLlegadas;
+    private final Map<Integer, List<Paciente>> agendaLlegadas;//la clave es el minuto ????
     private final PrintWriter logWriter;
 
     public CentroMedico(Configuracion config, PrintWriter logWriter) {
@@ -52,7 +54,7 @@ public class CentroMedico {
         return finSimulacion;
     }
 
-    public void agregarPaciente(Paciente p) {
+    public synchronized void agregarPaciente(Paciente p) {
         if (p.getTipo() == Paciente.Tipo.EMERGENCIA) {
             colaEmergencias.add(p);
             log("[Recepcion] Llega EMERGENCIA: " + p);

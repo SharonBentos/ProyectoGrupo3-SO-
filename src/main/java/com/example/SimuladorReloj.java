@@ -1,9 +1,9 @@
-import java.util.List;
+package com.example;
 
-public class Recepcionista implements Runnable {
+public class SimuladorReloj implements Runnable {
     private final CentroMedico centro;
 
-    public Recepcionista(CentroMedico centro) {
+    public SimuladorReloj(CentroMedico centro) {
         this.centro = centro;
     }
 
@@ -14,10 +14,7 @@ public class Recepcionista implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            List<Paciente> llegadas = centro.obtenerLlegadasActuales();
-            for (Paciente p : llegadas) {
-                centro.agregarPaciente(p);
-            }
+            centro.avanzarMinuto();
         }
     }
 }

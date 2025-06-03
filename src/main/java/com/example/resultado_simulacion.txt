@@ -1,0 +1,95 @@
+[Reloj] Tiempo actual: 08:01
+[Reloj] Tiempo actual: 08:02
+[Reloj] Tiempo actual: 08:03
+[Reloj] Tiempo actual: 08:04
+[Reloj] Tiempo actual: 08:05
+[Recepcion] Llega GENERAL: Paciente{Nombre=Axel, tipo=GENERAL, llegada=08:05, atencion=15min}
+[Planificador] Atendiendo a: Paciente{Nombre=Axel, tipo=GENERAL, llegada=08:05, atencion=15min}
+[Reloj] Tiempo actual: 08:06
+[Reloj] Tiempo actual: 08:07
+[Reloj] Tiempo actual: 08:08
+[Reloj] Tiempo actual: 08:09
+[Reloj] Tiempo actual: 08:10
+[Recepcion] Llega GENERAL: Paciente{Nombre=Dibot, tipo=GENERAL, llegada=08:10, atencion=15min}
+[Reloj] Tiempo actual: 08:11
+[Reloj] Tiempo actual: 08:12
+[Reloj] Tiempo actual: 08:13
+[Reloj] Tiempo actual: 08:14
+[Reloj] Tiempo actual: 08:15
+[Recepcion] Llega EMERGENCIA: Paciente{Nombre=Sharon, tipo=EMERGENCIA, llegada=08:15, atencion=10min}
+[Reloj] Tiempo actual: 08:16
+[Reloj] Tiempo actual: 08:17
+[Reloj] Tiempo actual: 08:18
+[Reloj] Tiempo actual: 08:19
+[Planificador] Terminó atención de: Paciente{Nombre=Axel, tipo=GENERAL, llegada=08:05, atencion=15min}
+[Planificador] Atendiendo a: Paciente{Nombre=Sharon, tipo=EMERGENCIA, llegada=08:15, atencion=10min}
+[Reloj] Tiempo actual: 08:20
+[Reloj] Tiempo actual: 08:21
+[Reloj] Tiempo actual: 08:22
+[Reloj] Tiempo actual: 08:23
+[Reloj] Tiempo actual: 08:24
+[Reloj] Tiempo actual: 08:25
+[Reloj] Tiempo actual: 08:26
+[Reloj] Tiempo actual: 08:27
+[Reloj] Tiempo actual: 08:28
+[Planificador] Terminó atención de: Paciente{Nombre=Sharon, tipo=EMERGENCIA, llegada=08:15, atencion=10min}
+[Planificador] Atendiendo a: Paciente{Nombre=Dibot, tipo=GENERAL, llegada=08:10, atencion=15min}
+[Reloj] Tiempo actual: 08:29
+[Reloj] Tiempo actual: 08:30
+[Reloj] Tiempo actual: 08:31
+[Reloj] Tiempo actual: 08:32
+[Reloj] Tiempo actual: 08:33
+[Reloj] Tiempo actual: 08:34
+[Reloj] Tiempo actual: 08:35
+[Reloj] Tiempo actual: 08:36
+[Reloj] Tiempo actual: 08:37
+[Reloj] Tiempo actual: 08:38
+[Reloj] Tiempo actual: 08:39
+[Reloj] Tiempo actual: 08:40
+[Reloj] Tiempo actual: 08:41
+[Reloj] Tiempo actual: 08:42
+[Planificador] Terminó atención de: Paciente{Nombre=Dibot, tipo=GENERAL, llegada=08:10, atencion=15min}
+[Reloj] Tiempo actual: 08:43
+[Reloj] Tiempo actual: 08:44
+[Reloj] Tiempo actual: 08:45
+[Reloj] Tiempo actual: 08:46
+[Reloj] Tiempo actual: 08:47
+[Reloj] Tiempo actual: 08:48
+[Reloj] Tiempo actual: 08:49
+[Reloj] Tiempo actual: 08:50
+[Reloj] Tiempo actual: 08:51
+[Reloj] Tiempo actual: 08:52
+[Reloj] Tiempo actual: 08:53
+[Reloj] Tiempo actual: 08:54
+[Reloj] Tiempo actual: 08:55
+[Reloj] Tiempo actual: 08:56
+[Reloj] Tiempo actual: 08:57
+[Reloj] Tiempo actual: 08:58
+[Reloj] Tiempo actual: 08:59
+[Reloj] Tiempo actual: 09:00
+[Reloj] Tiempo actual: 09:01
+[Reloj] Tiempo actual: 09:02
+[Reloj] Tiempo actual: 09:03
+[Reloj] Tiempo actual: 09:04
+[Reloj] Tiempo actual: 09:05
+[Reloj] Tiempo actual: 09:06
+[Reloj] Tiempo actual: 09:07
+[Reloj] Tiempo actual: 09:08
+[Reloj] Tiempo actual: 09:09
+[Reloj] Tiempo actual: 09:10
+[Reloj] Tiempo actual: 09:11
+[Reloj] Tiempo actual: 09:12
+[Reloj] Tiempo actual: 09:13
+[Reloj] Tiempo actual: 09:14
+[Reloj] Tiempo actual: 09:15
+[Reloj] Tiempo actual: 09:16
+[Reloj] Tiempo actual: 09:17
+[Reloj] Tiempo actual: 09:18
+[Reloj] Tiempo actual: 09:19
+[Reloj] Tiempo actual: 09:20
+[Reloj] Tiempo actual: 09:21
+[Reloj] Tiempo actual: 09:22
+[Reloj] Tiempo actual: 09:23
+[Reloj] Tiempo actual: 09:24
+[Reloj] Tiempo actual: 09:25
+[Reloj] Tiempo actual: 09:26

@@ -1,3 +1,5 @@
+package com.example;
+
 import java.io.*;
 import java.util.*;
 
@@ -16,7 +18,7 @@ public class Configuracion {
         }
         return config;
     }
-
+//genera la agenda, clave: minuto, valor: lista de pacientes en ese min.
     public Map<Integer, List<Paciente>> generarAgenda() {
         Map<Integer, List<Paciente>> agenda = new HashMap<>();
         for (String l : lineas) {
@@ -24,15 +26,14 @@ public class Configuracion {
             String[] partes = l.split(";");
             int hora = Integer.parseInt(partes[0]);
             int minuto = Integer.parseInt(partes[1]);
-            Paciente.Tipo tipo = Paciente.Tipo.valueOf(partes[2]);
-            int cantidad = Integer.parseInt(partes[3]);
-            int tiempoAtencion = Integer.parseInt(partes[4]);
+            Paciente.Tipo tipo = Paciente.Tipo.valueOf(partes[2]); // Actualizar try para que no se rompa
+            int tiempoAtencion = Integer.parseInt(partes[3]);
+            String name = partes[4];
+
 
             int tiempoEnMinutos = hora * 60 + minuto;
             agenda.putIfAbsent(tiempoEnMinutos, new ArrayList<>());
-            for (int i = 0; i < cantidad; i++) {
-                agenda.get(tiempoEnMinutos).add(new Paciente(tipo, new Tiempo(hora, minuto), tiempoAtencion));
-            }
+            agenda.get(tiempoEnMinutos).add(new Paciente(tipo, new Tiempo(hora, minuto), tiempoAtencion, name)); //se agregara nombre
         }
         return agenda;
     }
