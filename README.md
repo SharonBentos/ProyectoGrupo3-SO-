@@ -48,20 +48,23 @@ Este comportamiento refleja el funcionamiento de muchos sistemas operativos real
 Archivo de configuración actual:
 
 ```
-8;00;GENERAL;2;15
-8;15;EMERGENCIA;1;10
-9;30;GENERAL;1;15
-10;00;GENERAL;3;15
-10;01;GENERAL;1;15
-10;02;GENERAL;1;15
-10;03;EMERGENCIA;1;10
-10;45;EMERGENCIA;1;10
-11;15;GENERAL;2;15
+8;05;GENERAL;15;Axel
+8;10;GENERAL;15;Dibot
+8;15;EMERGENCIA;10;Sharon
+9;30;GENERAL;15;Gaston
+9;30;EMERGENCIA;15;Guzman
+10;00;GENERAL;15;Manuela
+10;01;GENERAL;15;Manuel
+10;02;GENERAL;15;Juan
+10;03;EMERGENCIA;10;Emiliano
+10;45;EMERGENCIA;10;Abril
+11;15;GENERAL;15;Sol
+12;15;EMERGENCIA;15;Echagüe
 ```
 
 ### Caso particular a destacar:
 
-* A las 10:00 ingresan 3 pacientes generales.
+* A las 10:00 ingresan 1 pacientes generales.
 * El planificador comienza a atender al primer general (toma 15 minutos).
 * Mientras tanto:
 
