@@ -18,22 +18,32 @@ public class Configuracion {
         }
         return config;
     }
-//genera la agenda, clave: minuto, valor: lista de pacientes en ese min.
+
+    // Genera la agenda: clave = minuto del día, valor = lista de pacientes que llegan en ese momento
     public Map<Integer, List<Paciente>> generarAgenda() {
         Map<Integer, List<Paciente>> agenda = new HashMap<>();
         for (String l : lineas) {
             if (l.isEmpty() || l.startsWith("#")) continue;
-            String[] partes = l.split(";");
-            int hora = Integer.parseInt(partes[0]);
-            int minuto = Integer.parseInt(partes[1]);
-            Paciente.Tipo tipo = Paciente.Tipo.valueOf(partes[2]); // Actualizar try para que no se rompa
-            int tiempoAtencion = Integer.parseInt(partes[3]);
-            String name = partes[4];
 
+            try {
+                String[] partes = l.split(";");
+                String nombre = partes[0];
+                Paciente.Tipo tipo = Paciente.Tipo.valueOf(partes[1]);
+                String[] horaMinuto = partes[2].split(":");
+                int hora = Integer.parseInt(horaMinuto[0]);
+                int minuto = Integer.parseInt(horaMinuto[1]);
+                int tiempoAtencion = Integer.parseInt(partes[3]);
 
-            int tiempoEnMinutos = hora * 60 + minuto;
-            agenda.putIfAbsent(tiempoEnMinutos, new ArrayList<>());
-            agenda.get(tiempoEnMinutos).add(new Paciente(tipo, new Tiempo(hora, minuto), tiempoAtencion, name)); //se agregara nombre
+                Tiempo llegada = new Tiempo(hora, minuto);
+                Paciente p = new Paciente(nombre, tipo, llegada, tiempoAtencion);
+
+                int tiempoEnMinutos = llegada.minutosTotales();
+                agenda.putIfAbsent(tiempoEnMinutos, new ArrayList<>());
+                agenda.get(tiempoEnMinutos).add(p);
+            } catch (Exception e) {
+                System.err.println("Error al procesar línea: " + l);
+                e.printStackTrace();
+            }
         }
         return agenda;
     }

@@ -1,17 +1,15 @@
 package com.example;
 
-import java.util.concurrent.*;
 import java.util.*;
 import java.io.PrintWriter;
 
 public class CentroMedico {
-    private final BlockingQueue<Paciente> colaGenerales = new LinkedBlockingQueue<>();//Cola de pacientes para at. gral
-    private final BlockingQueue<Paciente> colaEmergencias = new LinkedBlockingQueue<>();//cola de pacientes para at emergencias
+    private final Paciente[] pacientes = new Paciente[10];
     private Tiempo tiempoActual = new Tiempo(8, 0);
     private final Tiempo tiempoFin = new Tiempo(20, 0);
     private final Configuracion config;
     private boolean finSimulacion = false;
-    private final Map<Integer, List<Paciente>> agendaLlegadas;//la clave es el minuto ????
+    private final Map<Integer, List<Paciente>> agendaLlegadas;
     private final PrintWriter logWriter;
 
     public CentroMedico(Configuracion config, PrintWriter logWriter) {
@@ -44,6 +42,9 @@ public class CentroMedico {
 
     public synchronized void avanzarMinuto() {
         tiempoActual.avanzarMinuto();
+        for (Paciente p : pacientes) {
+            if (p != null) p.aumentarPrioridad();
+        }
         log("[Reloj] Tiempo actual: " + tiempoActual);
         if (tiempoActual.compareTo(tiempoFin) >= 0) {
             finSimulacion = true;
@@ -55,25 +56,38 @@ public class CentroMedico {
     }
 
     public synchronized void agregarPaciente(Paciente p) {
-        if (p.getTipo() == Paciente.Tipo.EMERGENCIA) {
-            colaEmergencias.add(p);
-            log("[Recepcion] Llega EMERGENCIA: " + p);
-        } else {
-            colaGenerales.add(p);
-            log("[Recepcion] Llega GENERAL: " + p);
+        for (int i = 0; i < pacientes.length; i++) {
+            if (pacientes[i] == null) {
+                pacientes[i] = p;
+                log("[Recepcion] Llega: " + p);
+                return;
+            }
+        }
+        log("[Recepcion] No hay lugar para: " + p);
+    }
+
+    public synchronized void removerPaciente(Paciente paciente) {
+        for (int i = 0; i < pacientes.length; i++) {
+            if (pacientes[i] == paciente) {
+                pacientes[i] = null;
+                return;
+            }
         }
     }
 
-    public Paciente obtenerSiguientePaciente() throws InterruptedException {
-        while (true) {
-            if (!colaEmergencias.isEmpty()) {
-                return colaEmergencias.poll();
-            }
-            if (!colaGenerales.isEmpty()) {
-                return colaGenerales.poll();
-            }
-            Thread.sleep(50);
+    public synchronized Paciente obtenerSiguientePaciente() {
+        List<Paciente> lista = new ArrayList<>();
+        for (Paciente p : pacientes) {
+            if (p != null) lista.add(p);
         }
+        if (lista.isEmpty()) return null;
+        Paciente siguiente = Collections.max(lista, Comparator.comparingInt(Paciente::getPrioridad));
+        removerPaciente(siguiente);
+        return siguiente;
+    }
+
+    public synchronized Paciente[] getPacientes() {
+        return pacientes;
     }
 
     public List<Paciente> obtenerLlegadasActuales() {

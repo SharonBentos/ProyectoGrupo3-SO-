@@ -30,4 +30,11 @@ public class Tiempo implements Comparable<Tiempo> {
     public int compareTo(Tiempo o) {
         return Integer.compare(this.minutosTotales(), o.minutosTotales());
     }
+
+    public Tiempo sumarMinutos(int minutos) {
+        int totalMinutos = this.minutosTotales() + minutos;
+        int nuevaHora = totalMinutos / 60;
+        int nuevoMinuto = totalMinutos % 60;
+        return new Tiempo(nuevaHora, nuevoMinuto); 
+    }
 }

@@ -1,37 +1,62 @@
 package com.example;
 
 public class Paciente {
-    public enum Tipo { GENERAL, EMERGENCIA, CARNE_SALUD }
-    public String name;
-    private Tipo tipo;
-    private Tiempo llegada;
-    private int tiempoAtencion;
+    public enum Tipo {
+        EMERGENCIA, URGENCIA, GENERAL_COMUN, CARNE_SALUD
+    }
 
-    public Paciente(Tipo tipo, Tiempo llegada, int tiempoAtencion, String name) {
+    private final String nombre;
+    private final Tipo tipo;
+    private final Tiempo tiempoLlegada;
+    private final int duracionAtencion;
+    private int prioridad;
+
+    public Paciente(String nombre, Tipo tipo, Tiempo tiempoLlegada, int duracionAtencion) {
+        this.nombre = nombre;
         this.tipo = tipo;
-        this.llegada = llegada;
-        this.tiempoAtencion = tiempoAtencion;
-        this.name = name;
+        this.tiempoLlegada = tiempoLlegada;
+        this.duracionAtencion = duracionAtencion;
+        this.prioridad = calcularPrioridadBase(tipo);
+    }
+
+    private int calcularPrioridadBase(Tipo tipo) {
+        return switch (tipo) {
+            case EMERGENCIA -> 100;
+            case URGENCIA -> 8;
+            case CARNE_SALUD, GENERAL_COMUN -> 6;
+        };
+    }
+
+    public void aumentarPrioridad() {
+        this.prioridad++;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public Tipo getTipo() {
         return tipo;
     }
 
-    public Tiempo getLlegada() {
-        return llegada;
+    public Tiempo getTiempoLlegada() {
+        return tiempoLlegada;
     }
 
-    public int getTiempoAtencion() {
-        return tiempoAtencion;
-    }
-
-    public String getName() {
-        return name;
+    public int getDuracionAtencion() {
+        return duracionAtencion;
     }
 
     @Override
     public String toString() {
-        return "Paciente{Nombre=" + name + ", tipo=" + tipo + ", llegada=" + llegada + ", atencion=" + tiempoAtencion + "min}";
+        return "Paciente{Nombre=" + nombre + ", tipo=" + tipo + ", llegada=" + tiempoLlegada +
+                ", prioridad=" + prioridad + ", atencion=" + duracionAtencion + "min}";
+    }
+    public int getTiempoAtencion() {
+        return duracionAtencion;   
     }
 }
